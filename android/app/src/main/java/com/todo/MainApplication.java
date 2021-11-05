@@ -1,4 +1,4 @@
-package com.todo;
+package com.shanmukeshwar.todo;
 
 import android.app.Application;
 import android.content.Context;
@@ -49,7 +49,7 @@ public class MainApplication extends Application implements ReactApplication {
       Context context, ReactInstanceManager reactInstanceManager) {
     if (BuildConfig.DEBUG) {
       try {
-        Class<?> aClass = Class.forName("com.todo.ReactNativeFlipper");
+        Class<?> aClass = Class.forName("com.shanmukeshwar.todo.ReactNativeFlipper");
         aClass
             .getMethod("initializeFlipper", Context.class, ReactInstanceManager.class)
             .invoke(null, context, reactInstanceManager);
