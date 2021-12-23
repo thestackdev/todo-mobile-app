@@ -1,5 +1,7 @@
-const trash = require('./trash.png')
-const deleteAll = require('./deleteAll.png')
-const add = require('./add.png')
+import User from './user.svg'
+import Email from './email.svg'
+import Password from './password.svg'
+import EyeOpen from './eyeopen.svg'
+import EyeClose from './eyeclose.svg'
 
-export { trash, deleteAll, add }
+export default { User, Email, Password, EyeOpen, EyeClose }

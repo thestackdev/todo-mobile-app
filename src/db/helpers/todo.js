@@ -1,9 +1,10 @@
 import database from '../index'
 
-const todos = database.collections.get('todos')
+const Todos = database.collections.get('todos')
 
-export const observe = () => todos.query().observe()
-export const create = async (content) => {
+export const Observe = () => todos.query().observe()
+
+export const Create = async (content) => {
   await database.write(async () => {
     await todos.create((todo) => {
       todo.content = content
@@ -11,8 +12,5 @@ export const create = async (content) => {
     })
   })
 }
-export const deleteAll = async () => {
-  await database.write(async () => {
-    await todos.query().destroyAllPermanently()
-  })
-}
+
+export default { Create, Observe, Todos }
