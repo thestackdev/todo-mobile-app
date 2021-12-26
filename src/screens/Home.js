@@ -143,7 +143,9 @@ const Todos = () => {
             )}
             <Pressable
               disabled={todo.status}
-              onPress={() => navigation.navigate('Update', todo)}
+              onPress={() =>
+                navigation.navigate('Update', { ...todo, updateCallBack })
+              }
             >
               <Text
                 style={
@@ -169,7 +171,9 @@ const Todos = () => {
             )}
             <Pressable
               disabled={todo.status}
-              onPress={() => navigation.navigate('Update', todo)}
+              onPress={() =>
+                navigation.navigate('Update', { ...todo, updateCallBack })
+              }
             >
               <Text
                 style={
