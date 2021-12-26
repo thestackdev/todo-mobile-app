@@ -10,7 +10,27 @@ const HomeNavigation = () => {
       <Stack.Screen
         name="Home"
         component={Screens.Home}
-        options={{ headerShown: false, statusBarHidden: true }}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Append"
+        component={Screens.Append}
+        options={{
+          title: '',
+          headerStyle: { backgroundColor: '#fff' },
+          headerShadowVisible: false,
+          headerTintColor: '#4285F4',
+        }}
+      />
+      <Stack.Screen
+        name="Update"
+        component={Screens.Update}
+        options={{
+          title: '',
+          headerStyle: { backgroundColor: '#fff' },
+          headerShadowVisible: false,
+          headerTintColor: '#4285F4',
+        }}
       />
     </Stack.Navigator>
   )

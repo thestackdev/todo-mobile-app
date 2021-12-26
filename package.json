@@ -10,15 +10,18 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@nozbe/watermelondb": "^0.24.0",
-    "@nozbe/with-observables": "^1.4.0",
+    "@react-native-async-storage/async-storage": "^1.15.14",
     "@react-navigation/native": "^6.0.6",
     "@react-navigation/native-stack": "^6.2.5",
     "axios": "^0.24.0",
+    "moment": "^2.29.1",
     "react": "17.0.2",
     "react-native": "0.66.4",
     "react-native-bootsplash": "^4.0.2",
+    "react-native-calendar-picker": "^7.1.2",
     "react-native-dotenv": "^3.3.1",
+    "react-native-global-font": "^1.0.3",
+    "react-native-keyboard-aware-scroll-view": "^0.9.5",
     "react-native-safe-area-context": "^3.3.2",
     "react-native-screens": "^3.10.1",
     "react-native-svg": "^12.1.1"
@@ -30,6 +33,7 @@
     "@react-native-community/eslint-config": "^3.0.1",
     "@types/react": "^17.0.38",
     "@types/react-native": "^0.66.9",
+    "@types/react-native-calendar-picker": "^7.0.2",
     "babel-jest": "^27.4.5",
     "eslint": "8.5.0",
     "jest": "^27.4.5",

@@ -5,20 +5,25 @@ import {
   StyleSheet,
   Pressable,
   ActivityIndicator,
-  ScrollView,
   Keyboard,
   TextInput,
+  Dimensions,
+  StatusBar,
 } from 'react-native'
 import axios from 'axios'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import Context from '../context/exports'
+import Assets from '../assets/exports'
 import { AUTH_URL } from '@env'
+
+const { width, height } = Dimensions.get('screen')
 
 const Verify = ({ route }) => {
   const [otpInput, setOtpInput] = useState('')
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
   const [status, setStatus] = useState({
-    value: 'Please wait requesting otp...',
+    value: 'Requesting otp...',
     color: '#FFC107',
   })
   const { fetchUserData } = useContext(Context.Auth.Context)
@@ -57,7 +62,7 @@ const Verify = ({ route }) => {
         _id: route.params._id,
       })
       setStatus({
-        value: 'An OTP has sent to your resgistered \n Email Address',
+        value: 'An OTP has sent to your registered \n Email Address',
         color: '#90A4AE',
       })
     } catch (error) {
@@ -77,15 +82,13 @@ const Verify = ({ route }) => {
   }, [otpInput])
 
   return (
-    <View style={Styles.Container}>
-      <View style={Styles.Header}>
-        <Text style={Styles.HeaderText}>Please verify to continue!</Text>
-      </View>
-      <ScrollView
-        style={Styles.Body}
-        keyboardShouldPersistTaps="always"
-        contentContainerStyle={{ alignItems: 'center' }}
-      >
+    <KeyboardAwareScrollView
+      style={Styles.Container}
+      keyboardShouldPersistTaps="always"
+    >
+      <StatusBar backgroundColor="#fff" barStyle="dark-content" />
+      <View style={Styles.Body}>
+        <Assets.Verify height={height * 0.3} width={width} />
         <Text style={[Styles.TextSubbed, { color: status.color }]}>
           {status.value}
         </Text>
@@ -178,7 +181,7 @@ const Verify = ({ route }) => {
           disabled={loading}
           style={[
             Styles.Button,
-            { backgroundColor: otpInput.length > 5 ? '#4DB6AC' : '#BDBDBD' },
+            { backgroundColor: otpInput.length > 5 ? '#4285F4' : '#BDBDBD' },
           ]}
         >
           {loading ? (
@@ -187,41 +190,30 @@ const Verify = ({ route }) => {
             <Text style={[Styles.ButtonText, { color: '#fff' }]}>Verify</Text>
           )}
         </Pressable>
-      </ScrollView>
-    </View>
+      </View>
+    </KeyboardAwareScrollView>
   )
 }
 
 const Styles = StyleSheet.create({
   Container: {
-    flex: 1,
-    backgroundColor: '#4DB6AC',
-  },
-  Header: {
-    flex: 0.2,
-    marginLeft: 23,
-    justifyContent: 'flex-end',
-  },
-  HeaderText: {
-    fontWeight: '500',
-    color: '#fff',
-    fontSize: 28,
+    height: height,
+    backgroundColor: '#fff',
+    flexDirection: 'column',
   },
   Body: {
-    flex: 0.8,
-    backgroundColor: '#fff',
-    borderTopRightRadius: 30,
-    borderTopLeftRadius: 30,
-    paddingTop: 19,
-    marginTop: 34,
+    marginTop: 23,
+    alignSelf: 'center',
+    alignItems: 'center',
+    width: '86%',
   },
   TextSubbed: {
     fontSize: 19,
     textAlign: 'center',
-    marginHorizontal: 19,
-    lineHeight: 28,
+    lineHeight: 23,
     fontWeight: '500',
-    marginVertical: 12,
+    marginVertical: 23,
+    fontFamily: 'Inter-Medium',
   },
   TextError: {
     color: '#F44336',
@@ -240,15 +232,16 @@ const Styles = StyleSheet.create({
     color: '#455A64',
   },
   Button: {
-    width: '90%',
+    width: '100%',
     marginTop: 23,
-    borderRadius: 9,
+    borderRadius: 16,
     padding: 12,
     alignItems: 'center',
   },
   ButtonText: {
     fontSize: 19,
     fontWeight: '500',
+    fontFamily: 'Inter-SemiBold',
   },
 })
 

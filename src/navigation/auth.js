@@ -10,17 +10,17 @@ const AuthNavigation = () => {
       <Stack.Screen
         name="Login"
         component={Screens.Login}
-        options={{ headerShown: false, statusBarHidden: true }}
+        options={{ headerShown: false }}
       />
       <Stack.Screen
         name="Register"
         component={Screens.Register}
-        options={{ headerShown: false, statusBarHidden: true }}
+        options={{ headerShown: false }}
       />
       <Stack.Screen
         name="Verify"
         component={Screens.Verify}
-        options={{ headerShown: false, statusBarHidden: true }}
+        options={{ headerShown: false }}
       />
     </Stack.Navigator>
   )
