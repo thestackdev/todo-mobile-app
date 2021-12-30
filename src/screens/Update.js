@@ -40,7 +40,11 @@ const Update = ({ route, navigation }) => {
         disabled={content === ''}
         onPress={() => {
           navigation.goBack()
-          route.params.updateCallBack({ _id: route.params._id, content, date })
+          route.params.updateCallBack({
+            client_id: route.params.client_id,
+            content: content.trim(),
+            date,
+          })
         }}
       >
         <Text style={Styles.PressableText}>Update Task</Text>

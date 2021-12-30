@@ -2,7 +2,6 @@ import React from 'react'
 import { View, StyleSheet, Text, TextInput, Pressable } from 'react-native'
 
 const Input = ({
-  label,
   error,
   IconLeft,
   placeholder,
@@ -28,6 +27,7 @@ const Input = ({
           placeholderTextColor="#BDBDBD"
           keyboardType={keyboardType}
           secureTextEntry={maskText}
+          autoCapitalize="none"
           value={value}
           onChangeText={onChange}
         />

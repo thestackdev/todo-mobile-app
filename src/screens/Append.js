@@ -43,7 +43,7 @@ const Append = ({ route }) => {
         disabled={content === ''}
         onPress={() => {
           navigation.goBack()
-          route.params.appendCallback({ content, date })
+          route.params.appendCallback({ content: content.trim(), date })
         }}
       >
         <Text style={Styles.PressableText}>Shedule Task</Text>
