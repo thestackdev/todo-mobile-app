@@ -1,5 +1,4 @@
 apply plugin: "com.android.application"
-apply plugin: "kotlin-android"
 
 import com.android.build.OutputFile
 
@@ -8,6 +7,7 @@ project.ext.react = [
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
+
 
 def enableSeparateBuildPerCPUArchitecture = true
 def enableProguardInReleaseBuilds = true
@@ -18,7 +18,9 @@ def nativeArchitectures = project.getProperties().get("reactNativeDebugArchitect
 
 android {
     ndkVersion rootProject.ext.ndkVersion
+
     compileSdkVersion rootProject.ext.compileSdkVersion
+
     defaultConfig {
         applicationId "com.shanmukeshwar.todo"
         minSdkVersion rootProject.ext.minSdkVersion
@@ -58,9 +60,9 @@ android {
             }
         }
         release {
-            signingConfig signingConfigs.release
-            minifyEnabled true
-            shrinkResources true
+            signingConfig signingConfigs.debug
+            minifyEnabled enableProguardInReleaseBuilds
+            shrinkResources enableShrinkResources
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
     }
@@ -73,19 +75,14 @@ android {
                 output.versionCodeOverride =
                         defaultConfig.versionCode * 1000 + versionCodes.get(abi)
             }
-
         }
-    }
-    lintOptions { 
-        checkReleaseBuilds false
     }
 }
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation "com.facebook.react:react-native:+"
+    implementation "com.facebook.react:react-native:+" 
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
     implementation "androidx.core:core-splashscreen:1.0.0-alpha02"
 
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {

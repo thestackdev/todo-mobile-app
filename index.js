@@ -1,15 +1,15 @@
-import React from 'react'
-import { AppRegistry, LogBox } from 'react-native'
-import { name as appName } from './app.json'
-import App from './src/App'
-import Context from './src/context/exports'
-import axios from 'axios'
+import React from 'react';
+import {AppRegistry, LogBox} from 'react-native';
+import {name as appName} from './app.json';
+import App from './src/App';
+import Context from './src/context/exports';
+import axios from 'axios';
 
-axios.defaults.withCredentials = true
+axios.defaults.withCredentials = true;
 
-import { NavigationContainer } from '@react-navigation/native'
+import {NavigationContainer} from '@react-navigation/native';
 
-LogBox.ignoreAllLogs()
+LogBox.ignoreAllLogs();
 
 const Wrapper = () => {
   return (
@@ -18,7 +18,7 @@ const Wrapper = () => {
         <App />
       </NavigationContainer>
     </Context.Auth.Provider>
-  )
-}
+  );
+};
 
-AppRegistry.registerComponent(appName, () => Wrapper)
+AppRegistry.registerComponent(appName, () => Wrapper);

@@ -1,1 +1,1 @@
-# React native todo with watermelondb
+# React native todo
